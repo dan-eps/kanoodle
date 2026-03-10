@@ -12,7 +12,8 @@ class Piece():
     # @param        color - the character to display, generally is the first letter of the color
     # @param        shape - the coordinates of the spaces taken up by the piece
     # @param        rots - the number of different rotations that a piece has
-    def __init__(self, color, shape, rots, flips):
+    def __init__(self, id, color, shape, rots, flips):
+        self.id = id
         self.color = color
         self.shape = shape 
         self.rots = rots

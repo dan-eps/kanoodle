@@ -107,7 +107,7 @@ class Menu:
         self.clear_screen()
         self.printPieces(self.pieces)
         for key in pieceOptions:
-            keyboard.add_hotkey(key, lambda key=key: self.addPiece(copy.deepcopy(self.pieces[pieceOptions.index(key)]), pieceOptions.index(key)))
+            keyboard.add_hotkey(key, lambda key=key: self.addPiece(copy.deepcopy(self.pieces[pieceOptions.index(key)]), pieceOptions.index(key)), suppress=True)
     
     # @function     addPiece
     # @purpose      Adds a selected piece to the next open spot on the board
@@ -318,14 +318,14 @@ class Menu:
     # @function     startListeners
     # @purpose      Adds hotkeys for all of the menu options
     def startListeners(self):
-        keyboard.add_hotkey('d', self.removeLastPiece)
-        keyboard.add_hotkey('p', self.selectPiece)
-        keyboard.add_hotkey('r', self.rotateLast)
-        keyboard.add_hotkey('f', self.flipLast)
-        keyboard.add_hotkey('left', self.moveLeft)
-        keyboard.add_hotkey('right', self.moveRight)
-        keyboard.add_hotkey('down', self.moveDown)
-        keyboard.add_hotkey('up', self.moveUp)
+        keyboard.add_hotkey('d', self.removeLastPiece, suppress=True)
+        keyboard.add_hotkey('p', self.selectPiece, suppress=True)
+        keyboard.add_hotkey('r', self.rotateLast, suppress=True)
+        keyboard.add_hotkey('f', self.flipLast, suppress=True)
+        keyboard.add_hotkey('left', self.moveLeft, suppress=True)
+        keyboard.add_hotkey('right', self.moveRight, suppress=True)
+        keyboard.add_hotkey('down', self.moveDown, suppress=True)
+        keyboard.add_hotkey('up', self.moveUp, suppress=True)
 
     # @function     run
     # @purpose      Runs the menu until the user hits "q" to solve
@@ -333,7 +333,7 @@ class Menu:
     def run(self):
         self.startListeners()
         self.print()
-        keyboard.wait('q')
+        keyboard.wait('q', suppress=True)
         return self.starters
 
 
